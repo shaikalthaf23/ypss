@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YPS 2025 — Filled Questionnaire (Pro UI)</title><link rel="stylesheet" href="style.css"></head><body>
+<div class="topbar"><div class="brand"><div class="logo">YP</div><div><div style="font-weight:800">AU YOUNG PROFESSIONALS</div><div class="topmeta">Beneficiary Questionnaire — Preview</div></div></div><div class="topmeta">Sample filled form • Greenish-blue theme</div></div>
+
+<div class="wrapper">
+  <main class="card fade-in">
+    <div class="progress">
+      <div class="step done">1. Questionnaire</div><div class="step done">2. Verification</div><div class="step">3. Application</div><div class="step">4. Disbursement</div>
+    </div>
+
+    <h2 style="color:var(--primary-2); margin-top:0">Questionnaire — Levels 1 & 2 (Preview)</h2>
+    <p class="hint">This page shows a fully filled sample beneficiary questionnaire for presentation purposes.</p>
+
+    <div class="form-grid">
+      <div class="preview">
+        <div class="kv"><strong>Student Name</strong><span>R. Karthik</span></div>
+        <div class="kv"><strong>Class / Degree</strong><span>B.Sc Computer Science (3rd Year)</span></div>
+        <div class="kv"><strong>School / College</strong><span>Government Arts College, Thanjavur</span></div>
+        <div class="kv"><strong>Medium</strong><span>English</span></div>
+        <div class="kv"><strong>Referred By</strong><span>Al-Ameen Trust — 98400 12345</span></div>
+        <div class="kv"><strong>Heard About Scheme</strong><span>College Noticeboard / Alumni</span></div>
+        <div class="kv"><strong>Source of Family Income</strong><span>Father — Auto driver; Mother — Housewife</span></div>
+        <div class="kv"><strong>How fees were paid last year</strong><span>Self-funded by father savings; loan for transport</span></div>
+      </div>
+
+      <div class="preview">
+        <div class="kv"><strong>Academic Performance / Skills</strong><span>71% in last exam; Active in sports (football)</span></div>
+        <div class="kv"><strong>Current Year Fees</strong><span>₹18,500</span></div>
+        <div class="kv"><strong>Amount Requested</strong><span>₹12,000</span></div>
+        <div class="kv"><strong>If > ₹10,000 — Why not change institute?</strong><span>Course specialization only available here</span></div>
+        <div class="kv"><strong>Balance funding plan</strong><span>Part-time tuition job + small family contribution</span></div>
+        <div class="kv"><strong>Interesting findings</strong><span>Sibling also studying; demonstrates leadership in local club</span></div>
+      </div>
+    </div>
+
+    <div style="height:18px"></div>
+    <h3 style="color:var(--primary-2)">Level 3 — Documents</h3>
+    <div class="form-grid">
+      <div class="preview">
+        <div class="kv"><strong>Aadhaar</strong><span>Uploaded (masked)</span></div>
+        <div class="kv"><strong>Marksheet</strong><span>Uploaded (pdf)</span></div>
+        <div class="kv"><strong>Bank Passbook</strong><span>Uploaded (first page)</span></div>
+      </div>
+      <div class="preview">
+        <div class="kv"><strong>Bonafide / ID</strong><span>Uploaded</span></div>
+        <div class="kv"><strong>Fee details</strong><span>Institute fee receipt uploaded</span></div>
+        <div class="kv"><strong>Passport Photo</strong><span>Uploaded</span></div>
+      </div>
+    </div>
+
+    <div style="height:18px"></div>
+    <div class="row">
+      <button class="btn" onclick="window.location.href='waiting.html'">Go to Waiting / Verification</button>
+      <button class="btn ghost" onclick="window.location.href='application.html'">Open Application (final)</button>
+    </div>
+
+    <div class="footer-note">This is a presentation UI — fields are populated to show stakeholders how a completed form looks.</div>
+  </main>
+
+  <aside>
+    <div class="card widget fade-in">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px">
+        <div><div style="font-weight:800; color:var(--primary-2)">Trustee Queue</div><div class="hint">Auto-assign available</div></div>
+        <div class="tag">Queue: 3</div>
+      </div>
+      <div style="height:12px"></div>
+      <div class="trustee"><div class="meta"><div style="width:44px; height:44px; border-radius:8px; background:linear-gradient(135deg,#0ea5a4,#04747a); color:white; display:flex; align-items:center; justify-content:center; font-weight:800">AR</div><div><div style="font-weight:700">A. Rahman</div><div class="hint">Senior Trustee</div></div></div><div class="pulse"></div></div>
+      <div style="height:10px"></div>
+      <div class="trustee" style="margin-top:8px"><div class="meta"><div style="width:44px; height:44px; border-radius:8px; background:#f0fdf9; color:var(--primary-2); display:flex; align-items:center; justify-content:center; font-weight:700">SF</div><div><div style="font-weight:700">S. Fatima</div><div class="hint">Field Investigator</div></div></div><div style="width:10px; height:10px; border-radius:50%; background:#f59e0b"></div></div>
+      <div style="height:10px"></div>
+      <div class="trustee"><div class="meta"><div style="width:44px; height:44px; border-radius:8px; background:#f0fdf9; color:var(--primary-2); display:flex; align-items:center; justify-content:center; font-weight:700">MI</div><div><div style="font-weight:700">M. Imran</div><div class="hint">Available</div></div></div><div class="pulse" style="background:#34d399"></div></div>
+
+      <div style="height:12px"></div>
+      <div style="display:flex; gap:8px;"><button class="btn" onclick="window.location.href='admin.html'">Open Admin</button><button class="btn ghost" onclick="alert('Exporting as PDF...')">Export PDF</button></div>
+      <div class="footer-note">Contact: 84283 66631 • INK CENTER, Thanjavur</div>
+    </div>
+  </aside>
+</div>
+</body></html>

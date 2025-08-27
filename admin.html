@@ -1,0 +1,95 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>YPS — Admin</title><link rel="stylesheet" href="style.css"></head><body>
+<div class="topbar"><div class="brand"><div class="logo">YP</div><div><div style="font-weight:800">AU YPS Admin</div><div class="topmeta">Assign Trustees • Audit</div></div></div><div class="topmeta">Admin Panel</div></div>
+
+<div class="wrapper" style="grid-template-columns:1fr; padding:0 20px">
+  <main class="card fade-in" style="max-width:1100px; margin:0 auto">
+    <div style="display:flex; justify-content:space-between; align-items:center"><h2 style="margin:0; color:var(--primary-2)">Pending Questionnaires</h2><div class="hint">Auto-assign rotates free trustees</div></div>
+    <div style="height:12px"></div>
+    <div id="pending" class="card-list"></div>
+
+    <div style="height:14px"></div>
+    <h3 style="color:var(--primary-2)">Trustees</h3>
+    <div id="trustees" class="card-list"></div>
+
+    <div style="height:16px; display:flex; gap:10px; margin-top:12px"><button class="btn" onclick="autoAssign()">Auto-Assign All</button><button class="btn ghost" onclick="resetSample()">Reset Sample Data</button></div>
+
+    <div style="height:18px"></div>
+    <h3 style="color:var(--primary-2)">Assignment History</h3>
+    <div id="history" class="card-list"></div>
+  </main>
+</div>
+
+<script>
+let trustees = [
+  {id:1, name:'A. Rahman', status:'free'},
+  {id:2, name:'S. Fatima', status:'free'},
+  {id:3, name:'M. Imran', status:'free'},
+  {id:4, name:'R. Yasmin', status:'free'}
+];
+let pending = [
+  {id:'Q-1023', name:'Karthik', school:'Govt HS', amount:8000},
+  {id:'Q-1024', name:'Nisha', school:'St Mary\'s', amount:12000},
+  {id:'Q-1025', name:'Ayesha', school:'City College', amount:6000},
+  {id:'Q-1026', name:'Mohan', school:'Indira Public', amount:4000}
+];
+let history = [];
+
+function renderLists(){
+  const p = document.getElementById('pending'); p.innerHTML='';
+  pending.forEach(item=>{
+    const div = document.createElement('div'); div.className='card';
+    div.innerHTML = `<div><div class="kv"><strong>${item.id} — ${item.name}</strong></div><div class="hint">${item.school} • ₹${item.amount}</div></div><div><div style="display:flex; gap:8px"><button class="btn ghost" onclick="assignOne('${item.id}')">Assign</button></div></div>`;
+    p.appendChild(div);
+  });
+  const t = document.getElementById('trustees'); t.innerHTML='';
+  trustees.forEach(tr=>{
+    const div = document.createElement('div'); div.className='card';
+    div.innerHTML = `<div><div class="kv"><strong>${tr.name}</strong></div><div class="hint">Status: ${tr.status}</div></div><div class="tag">${tr.status}</div>`;
+    t.appendChild(div);
+  });
+  const h = document.getElementById('history'); h.innerHTML='';
+  history.slice().reverse().forEach(hd=>{
+    const div = document.createElement('div'); div.className='card';
+    div.innerHTML = `<div><div class="kv"><strong>${hd.task}</strong></div><div class="hint">${hd.trustee} • ${hd.time}</div></div>`;
+    h.appendChild(div);
+  });
+}
+
+function assignOne(taskId){
+  const freeIndex = trustees.findIndex(t=>t.status==='free');
+  if(freeIndex===-1){ alert('No free trustee available'); return; }
+  const taskIndex = pending.findIndex(p=>p.id===taskId);
+  if(taskIndex===-1) return;
+  const task = pending.splice(taskIndex,1)[0];
+  trustees[freeIndex].status='busy';
+  history.push({task:task.id + ' - ' + task.name, trustee:trustees[freeIndex].name, time: new Date().toLocaleString()});
+  renderLists();
+}
+
+function autoAssign(){
+  // loop and assign while free trustees and pending tasks exist
+  while(pending.length>0){
+    const freeIndex = trustees.findIndex(t=>t.status==='free');
+    if(freeIndex===-1) break;
+    const task = pending.shift();
+    trustees[freeIndex].status='busy';
+    history.push({task:task.id + ' - ' + task.name, trustee:trustees[freeIndex].name, time: new Date().toLocaleString()});
+  }
+  renderLists();
+}
+
+function resetSample(){
+  trustees.forEach(t=> t.status='free');
+  pending = [
+    {id:'Q-1023', name:'Karthik', school:'Govt HS', amount:8000},
+    {id:'Q-1024', name:'Nisha', school:'St Mary\'s', amount:12000},
+    {id:'Q-1025', name:'Ayesha', school:'City College', amount:6000},
+    {id:'Q-1026', name:'Mohan', school:'Indira Public', amount:4000}
+  ];
+  history = [];
+  renderLists();
+}
+
+renderLists();
+</script>
+</body></html>
